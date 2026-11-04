@@ -50,8 +50,8 @@ export const ui = {
     'services.s2.desc': 'Conectamos herramientas existentes y eliminamos tareas manuales repetitivas.',
     'services.s3.title': 'Diseño y modernización UI/UX',
     'services.s3.desc': 'Interfaces intuitivas, veloces y accesibles que tus clientes y equipo disfrutan usar.',
-    'services.s4.title': 'Integración de APIs y pagos',
-    'services.s4.desc': 'Conexión con pasarelas de pago, facturación electrónica y servicios de terceros.',
+
+
 
     // Purpose / Why Us
     'purpose.tag': 'Nuestro enfoque',
@@ -172,8 +172,8 @@ export const ui = {
     'services.s2.desc': 'Connect your existing software stack and eliminate repetitive manual tasks.',
     'services.s3.title': 'UI/UX Design & Revamp',
     'services.s3.desc': 'Fast, intuitive, and accessible interfaces that your clients and team actually enjoy using.',
-    'services.s4.title': 'API & Payment Integrations',
-    'services.s4.desc': 'Robust integration with payment gateways, third-party APIs, and invoicing tools.',
+
+
 
     // Purpose / Why Us
     'purpose.tag': 'Our Approach',

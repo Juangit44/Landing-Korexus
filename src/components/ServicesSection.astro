@@ -1,6 +1,6 @@
 ---
 import { useTranslations, type Lang } from '../i18n/ui';
-import { Layers, Workflow, Palette, Network } from '@lucide/astro';
+import { Layers, Workflow, Palette } from '@lucide/astro';
 
 interface Props {
   lang: Lang;
@@ -25,11 +25,6 @@ const services = [
     titleKey: 'services.s3.title',
     descKey: 'services.s3.desc',
   },
-  {
-    icon: Network,
-    titleKey: 'services.s4.title',
-    descKey: 'services.s4.desc',
-  },
 ] as const;
 ---
 
@@ -48,8 +43,8 @@ const services = [
       </p>
     </div>
 
-    <!-- Services Grid (2x2) -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+    <!-- Services Grid (3 columns) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
       {
         services.map((item, index) => {
           const Icon = item.icon;
