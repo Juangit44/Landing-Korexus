@@ -1,0 +1,76 @@
+---
+import { useTranslations, type Lang } from '../i18n/ui';
+import { Users2, CheckCircle2, Globe2 } from '@lucide/astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const reasons = [
+  {
+    icon: Users2,
+    titleKey: 'purpose.r1.title',
+    descKey: 'purpose.r1.desc',
+  },
+  {
+    icon: CheckCircle2,
+    titleKey: 'purpose.r2.title',
+    descKey: 'purpose.r2.desc',
+  },
+  {
+    icon: Globe2,
+    titleKey: 'purpose.r3.title',
+    descKey: 'purpose.r3.desc',
+  },
+] as const;
+---
+
+<section class="py-20 sm:py-24 px-4 bg-[#FCFCFC]">
+  <div class="max-w-5xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left side: Mission -->
+      <div class="lg:col-span-5 space-y-4">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[#B8500D]">
+          {t('purpose.tag')}
+        </p>
+        <h2 class="text-3xl sm:text-4xl font-medium tracking-tight text-[#141414] leading-tight">
+          {t('purpose.title')}
+        </h2>
+        <p class="text-sm sm:text-base text-[#5A5A5A] leading-relaxed">
+          {lang === 'es'
+            ? 'Creemos en relaciones de trabajo transparentes, código limpio y software que resuelve problemas reales sin inflar costos ni promesas vacías.'
+            : 'We believe in transparent partnerships, clean engineering, and software that solves real bottlenecks without inflated costs or empty promises.'}
+        </p>
+      </div>
+
+      <!-- Right side: 3 Verifiable Reasons -->
+      <div class="lg:col-span-7 flex flex-col gap-4">
+        {
+          reasons.map((r) => {
+            const Icon = r.icon;
+            return (
+              <div class="flex items-start gap-4 p-5 rounded-2xl bg-white border border-[#242424]/10 shadow-sm hover:border-[#EC8C4E] transition-all">
+                <div class="w-10 h-10 rounded-xl bg-[#EC8C4E]/15 text-[#D0681C] flex items-center justify-center shrink-0 mt-0.5">
+                  <Icon class="w-5 h-5 stroke-[2.2]" />
+                </div>
+                <div>
+                  <h3 class="text-base sm:text-lg font-semibold text-[#141414]">
+                    {t(r.titleKey)}
+                  </h3>
+                  <p class="text-xs sm:text-sm text-[#5A5A5A] mt-1 leading-relaxed">
+                    {t(r.descKey)}
+                  </p>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+
+    </div>
+  </div>
+</section>

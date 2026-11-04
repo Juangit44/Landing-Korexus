@@ -1,0 +1,93 @@
+---
+import { useTranslations, type Lang } from '../i18n/ui';
+import { ArrowUpRight } from '@lucide/astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const contactUrl = lang === 'en' ? '/en/contact' : '/contacto';
+---
+
+<section id="inicio" class="pt-12 sm:pt-16 pb-0 overflow-hidden relative">
+  <div class="max-w-5xl mx-auto px-4 text-center">
+    <!-- Tagline / Badge -->
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#141414]/5 text-[#5A5A5A] text-xs font-semibold uppercase tracking-wider mb-6">
+      <span class="w-2 h-2 rounded-full bg-[#EC8C4E]"></span>
+      {t('hero.badge')}
+    </div>
+
+    <!-- Main Headline -->
+    <h1 class="text-4xl sm:text-6xl md:text-7xl font-medium tracking-tight text-[#141414] leading-[1.08] max-w-4xl mx-auto">
+      {t('hero.title_part1')}<br class="hidden sm:inline" /> {t('hero.title_part2')}{' '}
+      <span class="text-[#D0681C] font-semibold">{t('hero.title_highlight')}</span>
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="mt-6 text-base sm:text-lg text-[#5A5A5A] max-w-2xl mx-auto leading-relaxed">
+      {t('hero.subtitle')}
+    </p>
+  </div>
+
+  <!-- Hero Visual Stage: Flanks + Peach Arch + Action Pill -->
+  <div class="max-w-5xl mx-auto px-4 mt-12 sm:mt-16">
+    <div class="grid grid-cols-1 md:grid-cols-[1fr_360px_1fr] items-end gap-6 sm:gap-4">
+      
+      <!-- Left Flank Info -->
+      <div class="hidden md:block pb-8 text-left">
+        <p class="text-sm text-[#5A5A5A] leading-relaxed max-w-[220px]">
+          {t('hero.flank_left')}
+        </p>
+      </div>
+
+      <!-- Center: Peach Arch with Floating Dual Button -->
+      <div class="flex flex-col items-center justify-end">
+        <div
+          class="w-full max-w-[300px] sm:max-w-[350px] h-[160px] sm:h-[190px] bg-[#F3B47E] rounded-t-[175px] flex items-end justify-center pb-5 shadow-sm transition-transform duration-500 hover:scale-[1.01]"
+        >
+          <!-- Dual Action Pill Container -->
+          <div
+            class="bg-[#141414] p-1.5 rounded-full flex items-center gap-2 shadow-2xl border border-[#242424]"
+          >
+            <!-- Primary Action Button -->
+            <a
+              href="#sistemas"
+              class="bg-[#EC8C4E] text-[#141414] font-semibold text-xs sm:text-sm px-4 sm:px-5 py-2.5 rounded-full flex items-center gap-1.5 transition-all hover:bg-[#F3B47E] active:scale-95"
+            >
+              <span>{t('hero.cta_systems')}</span>
+              <ArrowUpRight class="w-4 h-4 stroke-[2.5]" />
+            </a>
+
+            <!-- Secondary Action Button -->
+            <a
+              href={contactUrl}
+              class="text-[#FCFCFC] font-medium text-xs sm:text-sm px-3 sm:px-4 py-2.5 rounded-full hover:text-[#EC8C4E] transition active:scale-95"
+            >
+              {t('hero.cta_contact')}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Flank Info -->
+      <div class="pb-8 text-center md:text-right">
+        <p class="text-xl sm:text-2xl font-semibold text-[#141414] tracking-tight">
+          {t('hero.flank_right_title')}
+        </p>
+        <p class="text-xs sm:text-sm text-[#5A5A5A] mt-0.5">
+          {t('hero.flank_right_sub')}
+        </p>
+      </div>
+
+      <!-- Mobile Left text under arch -->
+      <div class="block md:hidden text-center -mt-2">
+        <p class="text-xs text-[#5A5A5A]">
+          {t('hero.flank_left')}
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>

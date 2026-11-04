@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import SystemsSection from '../../components/SystemsSection.astro';
+import ServicesSection from '../../components/ServicesSection.astro';
+import PurposeSection from '../../components/PurposeSection.astro';
+import ProcessSection from '../../components/ProcessSection.astro';
+import TeamSection from '../../components/TeamSection.astro';
+import ContactSection from '../../components/ContactSection.astro';
+
+const lang = 'en';
+const title = 'Korexus — Custom Software to Scale Your Business';
+const description = 'We design and engineer bespoke web platforms, workflow automations, and secure software. Direct collaboration with engineers.';
+---
+
+<BaseLayout title={title} description={description} lang={lang} currentPath="/en/">
+  <Hero lang={lang} />
+  <SystemsSection lang={lang} />
+  <ServicesSection lang={lang} />
+  <PurposeSection lang={lang} />
+  <ProcessSection lang={lang} />
+  <TeamSection lang={lang} />
+  <ContactSection lang={lang} />
+</BaseLayout>

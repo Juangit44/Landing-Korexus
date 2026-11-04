@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ArrowLeft, Lock, CheckCircle, ShieldAlert } from '@lucide/astro';
+
+const lang = 'es';
+const title = 'Portal de Clientes y Cotizaciones — Caso Korexus';
+const description = 'Sistema privado de seguimiento en tiempo real, gestión de cotizaciones y panel seguro.';
+---
+
+<BaseLayout title={title} description={description} lang={lang} currentPath="/sistemas/sistema-dos">
+  <div class="max-w-4xl mx-auto px-4 py-12">
+    <!-- Back Button -->
+    <a
+      href="/#sistemas"
+      class="inline-flex items-center gap-2 text-xs font-semibold text-[#5A5A5A] hover:text-[#141414] mb-8 transition"
+    >
+      <ArrowLeft class="w-4 h-4" />
+      <span>Volver a Sistemas</span>
+    </a>
+
+    <!-- Header -->
+    <div class="border-b border-[#242424]/10 pb-8">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-800 border border-amber-200 inline-flex items-center gap-1.5">
+          <Lock class="w-3 h-3" />
+          En producción • Sistema Privado
+        </span>
+        <span class="text-xs text-[#5A5A5A]">Acuerdo de confidencialidad (NDA)</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-medium tracking-tight text-[#141414]">
+        Portal de Clientes y Cotizaciones
+      </h1>
+      <p class="mt-4 text-base sm:text-lg text-[#5A5A5A] leading-relaxed">
+        Plataforma segura para que clientes corporativos generen presupuestos automatizados y revisen el avance de sus proyectos en tiempo real.
+      </p>
+
+      <div class="mt-6 flex flex-wrap items-center gap-4">
+        <span class="inline-flex items-center gap-1.5 text-xs text-[#5A5A5A] bg-[#242424]/5 px-3.5 py-2 rounded-full border border-[#242424]/10">
+          <ShieldAlert class="w-4 h-4 text-amber-600" />
+          El acceso está restringido a usuarios autorizados de la empresa
+        </span>
+        <a
+          href="/contacto"
+          class="bg-[#EC8C4E] text-[#141414] font-semibold px-5 py-2.5 rounded-full text-sm hover:bg-[#F3B47E] transition"
+        >
+          Consultar por un desarrollo similar
+        </a>
+      </div>
+    </div>
+
+    <!-- Content Sections -->
+    <div class="py-10 space-y-12">
+      <!-- El Problema -->
+      <section>
+        <h2 class="text-xl sm:text-2xl font-semibold text-[#141414] mb-3">
+          El desafío
+        </h2>
+        <p class="text-[#5A5A5A] leading-relaxed">
+          Los clientes de la compañía debían enviar correos constantes para solicitar el estatus de sus pedidos y esperar días por una cotización formal. El equipo comercial perdía horas valiosas armando PDFs manualmente.
+        </p>
+      </section>
+
+      <!-- Qué hizo Korexus -->
+      <section>
+        <h2 class="text-xl sm:text-2xl font-semibold text-[#141414] mb-4">
+          La solución desarrollada por Korexus
+        </h2>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3">
+            <CheckCircle class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+            <span class="text-[#5A5A5A] leading-relaxed">
+              <strong class="text-[#141414]">Generador instantáneo de cotizaciones:</strong> Algoritmo de cálculo de tarifas dinámico con exportación automática a PDF con firma digital.
+            </span>
+          </li>
+          <li class="flex items-start gap-3">
+            <CheckCircle class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+            <span class="text-[#5A5A5A] leading-relaxed">
+              <strong class="text-[#141414]">Área privada con doble factor (2FA):</strong> Acceso cifrado para que cada cliente corporativo consulte su historial y facturación.
+            </span>
+          </li>
+          <li class="flex items-start gap-3">
+            <CheckCircle class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+            <span class="text-[#5A5A5A] leading-relaxed">
+              <strong class="text-[#141414]">Notificaciones automáticas por correo y webhook:</strong> Alertas inmediatas ante cambios de estado y aprobaciones de compra.
+            </span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Security / Preview Note -->
+      <section>
+        <h2 class="text-xl sm:text-2xl font-semibold text-[#141414] mb-4">
+          Privacidad y seguridad
+        </h2>
+        <div class="bg-[#141414] rounded-2xl p-8 text-center text-[#FCFCFC] border border-[#242424]">
+          <div class="max-w-md mx-auto space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-[#242424] text-[#F3B47E] flex items-center justify-center mx-auto">
+              <Lock class="w-6 h-6" />
+            </div>
+            <p class="font-medium text-lg">Acceso privado protegido</p>
+            <p class="text-xs sm:text-sm text-[#B0B0B0] leading-relaxed">
+              Por motivos de estricta confidencialidad comercial, no se proporciona enlace público ni credenciales de prueba. Todas las capturas empleadas en presentaciones utilizan identidades ficticias.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <div class="pt-6 border-t border-[#242424]/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <h3 class="font-semibold text-[#141414]">¿Buscas automatizar la interacción con tus clientes?</h3>
+          <p class="text-xs text-[#5A5A5A]">Evaluamos contigo la arquitectura ideal para tu empresa.</p>
+        </div>
+        <a
+          href="/contacto"
+          class="bg-[#EC8C4E] text-[#141414] font-semibold px-6 py-2.5 rounded-full text-sm hover:bg-[#F3B47E] transition shrink-0"
+        >
+          Hablemos del proyecto
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

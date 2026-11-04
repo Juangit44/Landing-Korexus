@@ -1,0 +1,75 @@
+---
+import '@fontsource/urbanist/400.css';
+import '@fontsource/urbanist/500.css';
+import '@fontsource/urbanist/600.css';
+import '@fontsource/urbanist/700.css';
+import '../styles/global.css';
+
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getAlternatePath, type Lang } from '../i18n/ui';
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: Lang;
+  currentPath?: string;
+}
+
+const {
+  title,
+  description,
+  lang = 'es',
+  currentPath = Astro.url.pathname,
+} = Astro.props;
+
+const siteOrigin = Astro.site ? Astro.site.origin : 'https://korexus.com';
+const canonicalURL = new URL(currentPath, siteOrigin);
+const esPath = lang === 'es' ? currentPath : getAlternatePath(currentPath, 'en');
+const enPath = lang === 'en' ? currentPath : getAlternatePath(currentPath, 'es');
+const esURL = new URL(esPath, siteOrigin);
+const enURL = new URL(enPath, siteOrigin);
+---
+
+<!doctype html>
+<html lang={lang} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Multilingual SEO hreflang -->
+    <link rel="alternate" hreflang="es" href={esURL} />
+    <link rel="alternate" hreflang="en" href={enURL} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/', siteOrigin)} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_US'} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <title>{title}</title>
+  </head>
+  <body class="bg-[#FCFCFC] text-[#141414] antialiased selection:bg-[#EC8C4E] selection:text-[#141414] min-h-screen flex flex-col justify-between">
+    <!-- Accessible Skip Link -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-5 focus:py-2.5 focus:bg-[#141414] focus:text-[#FCFCFC] focus:rounded-full focus:shadow-2xl focus:border focus:border-[#EC8C4E] focus:outline-none text-xs font-semibold"
+    >
+      {lang === 'es' ? 'Saltar al contenido principal' : 'Skip to main content'}
+    </a>
+
+    <Header lang={lang} currentPath={currentPath} />
+    <main id="main-content" class="flex-grow">
+      <slot />
+    </main>
+    <Footer lang={lang} currentPath={currentPath} />
+  </body>
+</html>

@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+const lang = 'en';
+const title = 'Contact Us — Korexus';
+const description = 'Get in touch to scope your custom software platform or workflow automation. Speak directly with the core engineering team.';
+---
+
+<BaseLayout title={title} description={description} lang={lang} currentPath="/en/contact">
+  <ContactForm lang={lang} />
+</BaseLayout>

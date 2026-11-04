@@ -1,0 +1,188 @@
+---
+import { useTranslations, getAlternatePath, type Lang } from '../i18n/ui';
+import { ArrowUpRight, Menu, X } from '@lucide/astro';
+
+interface Props {
+  lang: Lang;
+  currentPath?: string;
+}
+
+const { lang, currentPath = '/' } = Astro.props;
+const t = useTranslations(lang);
+const alternateUrl = getAlternatePath(currentPath, lang);
+const homePrefix = lang === 'en' ? '/en' : '';
+
+const isHome = currentPath === '/' || currentPath === '/en' || currentPath === '/en/';
+const isContact = currentPath === '/contacto' || currentPath === '/en/contact';
+---
+
+<header class="sticky top-4 z-50 px-4 max-w-6xl mx-auto w-full">
+  <nav
+    class="bg-[#141414] text-[#FCFCFC] rounded-full px-4 py-2.5 shadow-xl flex items-center justify-between border border-[#242424]/60 backdrop-blur-md"
+    aria-label={lang === 'es' ? 'Navegación principal' : 'Main navigation'}
+  >
+    <!-- Left Links (Desktop) -->
+    <div class="hidden md:flex items-center gap-1.5 text-sm font-medium">
+      <a
+        href={`${homePrefix}/#inicio`}
+        aria-current={isHome ? 'page' : undefined}
+        class={`px-4 py-1.5 rounded-full font-semibold transition ${
+          isHome
+            ? 'bg-[#EC8C4E] text-[#141414]'
+            : 'text-[#B0B0B0] hover:text-[#FCFCFC]'
+        }`}
+      >
+        {t('nav.home')}
+      </a>
+      <a
+        href={`${homePrefix}/#sistemas`}
+        class="px-3 py-1.5 rounded-full text-[#B0B0B0] hover:text-[#FCFCFC] transition"
+      >
+        {t('nav.systems')}
+      </a>
+      <a
+        href={`${homePrefix}/#servicios`}
+        class="px-3 py-1.5 rounded-full text-[#B0B0B0] hover:text-[#FCFCFC] transition"
+      >
+        {t('nav.services')}
+      </a>
+    </div>
+
+    <!-- Center Logo -->
+    <a href={`${homePrefix}/`} class="flex items-center gap-2.5 group" aria-label="Korexus Home">
+      <span
+        class="w-8 h-8 rounded-full bg-[#EC8C4E] text-[#141414] font-bold flex items-center justify-center text-sm shadow-sm transition group-hover:scale-105"
+      >
+        K
+      </span>
+      <span class="text-base font-semibold tracking-tight text-[#FCFCFC]">
+        Korexus
+      </span>
+    </a>
+
+    <!-- Right Links (Desktop) -->
+    <div class="hidden md:flex items-center gap-2 text-sm font-medium">
+      <a
+        href={`${homePrefix}/#proceso`}
+        class="px-3 py-1.5 rounded-full text-[#B0B0B0] hover:text-[#FCFCFC] transition"
+      >
+        {t('nav.process')}
+      </a>
+      <a
+        href={`${homePrefix}/#equipo`}
+        class="px-3 py-1.5 rounded-full text-[#B0B0B0] hover:text-[#FCFCFC] transition"
+      >
+        {t('nav.team')}
+      </a>
+      <a
+        href={lang === 'en' ? '/en/contact' : '/contacto'}
+        aria-current={isContact ? 'page' : undefined}
+        class={`px-3.5 py-1.5 rounded-full transition ${
+          isContact
+            ? 'bg-[#EC8C4E] text-[#141414] font-semibold'
+            : 'text-[#FCFCFC] hover:text-[#EC8C4E]'
+        }`}
+      >
+        {t('nav.contact')}
+      </a>
+
+      <!-- Language Switcher Pill -->
+      <a
+        href={alternateUrl}
+        class="ml-2 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wider text-[#B0B0B0] hover:text-[#FCFCFC] border border-[#4C4C4C] hover:border-[#EC8C4E] transition focus-visible:ring-2 focus-visible:ring-[#EC8C4E]"
+        title={lang === 'es' ? 'Switch to English' : 'Cambiar a Español'}
+      >
+        {lang === 'es' ? 'ES | EN' : 'EN | ES'}
+      </a>
+    </div>
+
+    <!-- Mobile Action Buttons -->
+    <div class="flex items-center gap-2 md:hidden">
+      <a
+        href={alternateUrl}
+        class="px-3 py-1 rounded-full text-xs font-semibold text-[#B0B0B0] border border-[#4C4C4C]"
+        aria-label={lang === 'es' ? 'Cambiar a idioma inglés' : 'Switch to Spanish'}
+      >
+        {lang === 'es' ? 'EN' : 'ES'}
+      </a>
+      <button
+        id="mobile-menu-btn"
+        type="button"
+        class="p-2 rounded-full text-[#FCFCFC] hover:bg-[#242424] transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#EC8C4E]"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label={lang === 'es' ? 'Abrir menú de navegación' : 'Open navigation menu'}
+      >
+        <Menu class="w-5 h-5" id="menu-open-icon" />
+        <X class="w-5 h-5 hidden" id="menu-close-icon" />
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer Menu -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden mt-2 bg-[#141414] border border-[#242424] rounded-2xl p-4 shadow-2xl flex flex-col gap-2 text-sm font-medium text-[#B0B0B0]"
+  >
+    <a href={`${homePrefix}/#inicio`} class="px-3 py-2 rounded-lg text-[#FCFCFC] hover:bg-[#242424]">
+      {t('nav.home')}
+    </a>
+    <a href={`${homePrefix}/#sistemas`} class="px-3 py-2 rounded-lg hover:bg-[#242424]">
+      {t('nav.systems')}
+    </a>
+    <a href={`${homePrefix}/#servicios`} class="px-3 py-2 rounded-lg hover:bg-[#242424]">
+      {t('nav.services')}
+    </a>
+    <a href={`${homePrefix}/#proceso`} class="px-3 py-2 rounded-lg hover:bg-[#242424]">
+      {t('nav.process')}
+    </a>
+    <a href={`${homePrefix}/#equipo`} class="px-3 py-2 rounded-lg hover:bg-[#242424]">
+      {t('nav.team')}
+    </a>
+    <a
+      href={lang === 'en' ? '/en/contact' : '/contacto'}
+      class="px-3 py-2 rounded-lg text-[#EC8C4E] hover:bg-[#242424] flex items-center justify-between"
+    >
+      <span>{t('nav.contact')}</span>
+      <ArrowUpRight class="w-4 h-4" />
+    </a>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const openIcon = document.getElementById('menu-open-icon');
+  const closeIcon = document.getElementById('menu-close-icon');
+
+  function toggleMenu(isOpen?: boolean) {
+    const shouldOpen = isOpen !== undefined ? isOpen : menu?.classList.contains('hidden');
+    if (shouldOpen) {
+      menu?.classList.remove('hidden');
+      openIcon?.classList.add('hidden');
+      closeIcon?.classList.remove('hidden');
+      btn?.setAttribute('aria-expanded', 'true');
+    } else {
+      menu?.classList.add('hidden');
+      openIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+      btn?.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  btn?.addEventListener('click', () => {
+    const isCurrentlyHidden = menu?.classList.contains('hidden');
+    toggleMenu(isCurrentlyHidden);
+  });
+
+  menu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => toggleMenu(false));
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !menu?.classList.contains('hidden')) {
+      toggleMenu(false);
+      btn?.focus();
+    }
+  });
+</script>

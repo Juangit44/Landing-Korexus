@@ -1,0 +1,136 @@
+---
+import { useTranslations, type Lang } from '../i18n/ui';
+import { ArrowUpRight, Lock, ExternalLink } from '@lucide/astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const system1DetailUrl = lang === 'en' ? '/en/systems/system-one' : '/sistemas/sistema-uno';
+const system2DetailUrl = lang === 'en' ? '/en/systems/system-two' : '/sistemas/sistema-dos';
+---
+
+<section id="sistemas" class="bg-[#141414] text-[#FCFCFC] rounded-t-[32px] sm:rounded-t-[48px] pt-16 sm:pt-20 pb-20 sm:pb-28 px-4 relative z-10 -mt-1 shadow-2xl">
+  <div class="max-w-5xl mx-auto">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-10 border-b border-[#242424]">
+      <div>
+        <p class="text-xs uppercase tracking-widest text-[#EC8C4E] font-semibold mb-2">
+          {lang === 'es' ? 'Portafolio Comprobado' : 'Proven Track Record'}
+        </p>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight">
+          {t('systems.title_part1')} <span class="text-[#EC8C4E]">{t('systems.title_highlight')}</span>
+        </h2>
+      </div>
+      <p class="text-sm text-[#B0B0B0] max-w-sm leading-relaxed">
+        {t('systems.subtitle')}
+      </p>
+    </div>
+
+    <!-- Systems Cards Grid / List -->
+    <div class="mt-8 flex flex-col gap-5">
+      
+      <!-- System 1: Public -->
+      <article
+        class="group relative bg-[#242424] border border-[#4C4C4C]/50 hover:border-[#EC8C4E] rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:shadow-xl hover:shadow-[#EC8C4E]/5"
+      >
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+          <div class="space-y-2 max-w-2xl">
+            <div class="flex items-center gap-3">
+              <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#141414] text-[#EC8C4E] border border-[#4C4C4C]/60">
+                Web App
+              </span>
+              <span class="text-xs text-[#B0B0B0]">Producción 2026</span>
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-medium text-[#FCFCFC] tracking-tight group-hover:text-[#EC8C4E] transition-colors">
+              <a href={system1DetailUrl} class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EC8C4E] rounded-lg">
+                <span class="absolute inset-0" aria-hidden="true"></span>
+                {t('systems.s1.title')}
+              </a>
+            </h3>
+            <p class="text-sm sm:text-base text-[#B0B0B0] leading-relaxed">
+              {t('systems.s1.desc')}
+            </p>
+          </div>
+
+          <!-- Actions -->
+          <div class="flex items-center gap-3 self-end sm:self-center relative z-20">
+            <span
+              class="border border-[#4C4C4C] rounded-full px-3.5 py-1.5 text-xs text-[#B0B0B0] font-medium flex items-center gap-1.5 bg-[#141414]/40"
+            >
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              {t('systems.view_live')}
+            </span>
+            <div
+              class="w-11 h-11 rounded-full bg-[#EC8C4E] text-[#141414] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12 shadow-md"
+            >
+              <ArrowUpRight class="w-5 h-5 stroke-[2.5]" />
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- System 2: Private -->
+      <article
+        class="group relative bg-[#242424] border border-[#4C4C4C]/50 hover:border-[#EC8C4E] rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:shadow-xl hover:shadow-[#EC8C4E]/5"
+      >
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+          <div class="space-y-2 max-w-2xl">
+            <div class="flex items-center gap-3">
+              <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#141414] text-[#F3B47E] border border-[#4C4C4C]/60">
+                Enterprise SaaS
+              </span>
+              <span class="text-xs text-[#B0B0B0]">Privado / NDA</span>
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-medium text-[#FCFCFC] tracking-tight group-hover:text-[#EC8C4E] transition-colors">
+              <a href={system2DetailUrl} class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EC8C4E] rounded-lg">
+                <span class="absolute inset-0" aria-hidden="true"></span>
+                {t('systems.s2.title')}
+              </a>
+            </h3>
+            <p class="text-sm sm:text-base text-[#B0B0B0] leading-relaxed">
+              {t('systems.s2.desc')}
+            </p>
+          </div>
+
+          <!-- Actions -->
+          <div class="flex items-center gap-3 self-end sm:self-center relative z-20">
+            <span
+              class="border border-[#4C4C4C] rounded-full px-3.5 py-1.5 text-xs text-[#B0B0B0] font-medium flex items-center gap-1.5 bg-[#141414]/40"
+            >
+              <Lock class="w-3 h-3 text-[#F3B47E]" />
+              {t('systems.private_access')}
+            </span>
+            <div
+              class="w-11 h-11 rounded-full bg-[#EC8C4E] text-[#141414] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12 shadow-md"
+            >
+              <ArrowUpRight class="w-5 h-5 stroke-[2.5]" />
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Note on Scalability -->
+    <div class="mt-8 pt-6 border-t border-[#242424] flex flex-col sm:flex-row items-center justify-between text-xs text-[#B0B0B0] gap-4">
+      <p>
+        {lang === 'es'
+          ? 'Casos mostrados con autorización de sus respectivos propietarios. Datos sensibles protegidos.'
+          : 'Case studies displayed with explicit owner permission. Sensitive client data strictly anonymized.'}
+      </p>
+      <a
+        href={lang === 'en' ? '/en/contact' : '/contacto'}
+        class="text-[#EC8C4E] hover:underline font-medium inline-flex items-center gap-1"
+      >
+        <span>{lang === 'es' ? '¿Quieres que construyamos el tuyo?' : 'Want us to build your system?'}</span>
+        <ArrowUpRight class="w-3.5 h-3.5" />
+      </a>
+    </div>
+
+  </div>
+</section>
