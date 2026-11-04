@@ -1,0 +1,44 @@
+---
+import { useTranslations, getAlternatePath, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  currentPath?: string;
+}
+
+const { lang, currentPath = '/' } = Astro.props;
+const t = useTranslations(lang);
+
+const currentYear = new Date().getFullYear();
+const privacyUrl = lang === 'en' ? '/en/privacy-policy' : '/aviso-de-privacidad';
+const alternateUrl = getAlternatePath(currentPath, lang);
+---
+
+<footer class="bg-[#141414] text-[#B0B0B0] py-12 px-4 border-t border-[#242424] mt-auto">
+  <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-xs">
+    
+    <!-- Left: Brand & Copyright -->
+    <div class="flex items-center gap-3">
+      <span class="w-6 h-6 rounded-full bg-[#EC8C4E] text-[#141414] font-bold flex items-center justify-center text-xs">
+        K
+      </span>
+      <span class="text-[#FCFCFC] font-semibold">Korexus</span>
+      <span>•</span>
+      <span>© {currentYear} {t('footer.rights')}</span>
+    </div>
+
+    <!-- Right: Links -->
+    <div class="flex items-center gap-6">
+      <a href={privacyUrl} class="hover:text-[#FCFCFC] transition-colors underline-offset-4 hover:underline">
+        {t('footer.privacy')}
+      </a>
+      <a
+        href={alternateUrl}
+        class="border border-[#4C4C4C] rounded-full px-2.5 py-1 text-xs text-[#FCFCFC] hover:border-[#EC8C4E] transition"
+      >
+        {lang === 'es' ? 'Switch to English' : 'Cambiar a Español'}
+      </a>
+    </div>
+
+  </div>
+</footer>

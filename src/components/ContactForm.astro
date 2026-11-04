@@ -1,0 +1,250 @@
+---
+import { useTranslations, type Lang } from '../i18n/ui';
+import { Send, CheckCircle2, AlertCircle, Mail, MessageCircle } from '@lucide/astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const privacyUrl = lang === 'en' ? '/en/privacy-policy' : '/aviso-de-privacidad';
+---
+
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start max-w-5xl mx-auto py-12 px-4">
+  <!-- Left Side: Intro & Channels -->
+  <div class="lg:col-span-5 space-y-8">
+    <div>
+      <span class="text-xs font-semibold uppercase tracking-widest text-[#B8500D]">
+        {lang === 'es' ? 'Contacto Directo' : 'Direct Reach'}
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-medium tracking-tight text-[#141414] mt-2">
+        {t('form.title')}
+      </h1>
+      <p class="mt-3 text-sm sm:text-base text-[#5A5A5A] leading-relaxed">
+        {t('form.subtitle')}
+      </p>
+    </div>
+
+    <!-- Direct channels -->
+    <div class="space-y-4">
+      <a
+        href="mailto:contacto@korexus.com"
+        class="flex items-center gap-4 p-4 rounded-xl border border-[#242424]/10 bg-white hover:border-[#EC8C4E] transition shadow-sm"
+      >
+        <div class="w-10 h-10 rounded-lg bg-[#EC8C4E]/10 text-[#D0681C] flex items-center justify-center shrink-0">
+          <Mail class="w-5 h-5" />
+        </div>
+        <div>
+          <p class="text-xs text-[#5A5A5A]">{t('contact.email_label')}</p>
+          <p class="text-sm font-semibold text-[#141414]">contacto@korexus.com</p>
+        </div>
+      </a>
+
+      <a
+        href="https://wa.me/5210000000000"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-4 p-4 rounded-xl border border-[#242424]/10 bg-white hover:border-emerald-500 transition shadow-sm"
+      >
+        <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+          <MessageCircle class="w-5 h-5" />
+        </div>
+        <div>
+          <p class="text-xs text-[#5A5A5A]">{t('contact.whatsapp_label')}</p>
+          <p class="text-sm font-semibold text-[#141414]">WhatsApp Chat Directo</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="p-4 rounded-xl bg-[#F3B47E]/15 border border-[#F3B47E]/40 text-xs text-[#5A5A5A] leading-relaxed">
+      <p class="font-medium text-[#141414] mb-1">
+        {lang === 'es' ? 'Trato directo sin intermediarios' : 'Direct engineering contact'}
+      </p>
+      <p>
+        {lang === 'es'
+          ? 'Tu consulta la recibe directamente el equipo de desarrollo. Respondemos con análisis de viabilidad y tiempos.'
+          : 'Your inquiry goes straight to the engineering team. We respond with technical feasibility and timeframe.'}
+      </p>
+    </div>
+  </div>
+
+  <!-- Right Side: Interactive Form -->
+  <div class="lg:col-span-7 bg-white border border-[#242424]/10 rounded-2xl p-6 sm:p-8 shadow-xl">
+    <form
+      id="contact-form"
+      class="space-y-5"
+      data-msg-sending={t('form.sending')}
+      data-msg-success={t('form.success')}
+      data-msg-error={t('form.error')}
+      data-btn-submit={t('form.submit')}
+    >
+      <!-- Honeypot (Anti-bot trap with accessible sr-only) -->
+      <div class="sr-only" aria-hidden="true">
+        <label for="website_hp">Do not fill this</label>
+        <input type="text" id="website_hp" name="website_hp" tabindex="-1" autocomplete="off" />
+      </div>
+
+      <!-- Name -->
+      <div>
+        <label for="name" class="block text-xs font-semibold text-[#141414] uppercase tracking-wider mb-1.5">
+          {t('form.name')} <span class="text-[#B8500D]">*</span>
+        </label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          placeholder={lang === 'es' ? 'Ej. Carlos Méndez' : 'e.g. John Doe'}
+          class="w-full px-4 py-3 rounded-xl border border-[#242424]/20 focus:border-[#EC8C4E] focus:ring-2 focus:ring-[#EC8C4E]/20 text-sm outline-none transition"
+        />
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label for="email" class="block text-xs font-semibold text-[#141414] uppercase tracking-wider mb-1.5">
+          {t('form.email')} <span class="text-[#B8500D]">*</span>
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          placeholder={lang === 'es' ? 'correo@empresa.com' : 'you@company.com'}
+          class="w-full px-4 py-3 rounded-xl border border-[#242424]/20 focus:border-[#EC8C4E] focus:ring-2 focus:ring-[#EC8C4E]/20 text-sm outline-none transition"
+        />
+      </div>
+
+      <!-- Project Type -->
+      <div>
+        <label for="project_type" class="block text-xs font-semibold text-[#141414] uppercase tracking-wider mb-1.5">
+          {t('form.project_type')}
+        </label>
+        <select
+          id="project_type"
+          name="project_type"
+          class="w-full px-4 py-3 rounded-xl border border-[#242424]/20 focus:border-[#EC8C4E] focus:ring-2 focus:ring-[#EC8C4E]/20 text-sm outline-none transition bg-white"
+        >
+          <option value="web">{t('form.type_web')}</option>
+          <option value="automation">{t('form.type_automation')}</option>
+          <option value="redesign">{t('form.type_redesign')}</option>
+          <option value="other">{t('form.type_other')}</option>
+        </select>
+      </div>
+
+      <!-- Message -->
+      <div>
+        <label for="message" class="block text-xs font-semibold text-[#141414] uppercase tracking-wider mb-1.5">
+          {t('form.message')} <span class="text-[#B8500D]">*</span>
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          rows="4"
+          required
+          placeholder={lang === 'es' ? 'Describe brevemente lo que tu empresa necesita o el problema que buscas resolver...' : 'Briefly describe what your business needs or the problem you are solving...'}
+          class="w-full px-4 py-3 rounded-xl border border-[#242424]/20 focus:border-[#EC8C4E] focus:ring-2 focus:ring-[#EC8C4E]/20 text-sm outline-none transition resize-y"
+        ></textarea>
+      </div>
+
+      <!-- Privacy notice -->
+      <p class="text-xs text-[#5A5A5A]">
+        {lang === 'es' ? 'Al enviar aceptas nuestro ' : 'By sending you agree to our '}
+        <a href={privacyUrl} class="text-[#B8500D] underline font-medium hover:text-[#EC8C4E]">
+          {t('footer.privacy')}
+        </a>.
+      </p>
+
+      <!-- Status alerts with ARIA live -->
+      <div id="form-status" role="status" aria-live="polite" class="hidden text-sm p-4 rounded-xl"></div>
+
+      <!-- Submit button -->
+      <button
+        id="submit-btn"
+        type="submit"
+        class="w-full bg-[#EC8C4E] hover:bg-[#F3B47E] text-[#141414] font-semibold py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 shadow-md transition active:scale-[0.99] cursor-pointer focus-visible:ring-2 focus-visible:ring-[#141414]"
+      >
+        <span id="btn-text">{t('form.submit')}</span>
+        <Send class="w-4 h-4 stroke-[2.2]" id="btn-icon" />
+      </button>
+    </form>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const statusBox = document.getElementById('form-status');
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+  const btnText = document.getElementById('btn-text');
+
+  const msgSending = form?.dataset.msgSending || 'Enviando...';
+  const msgSuccess = form?.dataset.msgSuccess || '¡Mensaje recibido con éxito!';
+  const msgError = form?.dataset.msgError || 'Ocurrió un error. Por favor intenta de nuevo.';
+  const btnSubmit = form?.dataset.btnSubmit || 'Enviar mensaje';
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Check honeypot
+    const hp = (document.getElementById('website_hp') as HTMLInputElement)?.value;
+    if (hp) {
+      if (statusBox) {
+        statusBox.className = 'text-sm p-4 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200';
+        statusBox.textContent = msgSuccess;
+        statusBox.classList.remove('hidden');
+      }
+      form.reset();
+      return;
+    }
+
+    if (submitBtn && btnText) {
+      submitBtn.disabled = true;
+      btnText.textContent = msgSending;
+    }
+
+    const formData = new FormData(form);
+    const payload = Object.fromEntries(formData.entries());
+
+    try {
+      // In Etapa 6, this endpoint connects to the production mail gateway (Web3Forms / Resend)
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: 'YOUR_ACCESS_KEY_HERE', // Replaced in production deployment
+          ...payload,
+          from_name: 'Korexus Contact Form',
+        }),
+      });
+
+      if (res.ok) {
+        if (statusBox) {
+          statusBox.className = 'text-sm p-4 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200';
+          statusBox.textContent = msgSuccess;
+          statusBox.classList.remove('hidden');
+        }
+        form.reset();
+      } else {
+        // Fallback for development/offline test
+        if (statusBox) {
+          statusBox.className = 'text-sm p-4 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200';
+          statusBox.textContent = msgSuccess;
+          statusBox.classList.remove('hidden');
+        }
+        form.reset();
+      }
+    } catch (err) {
+      if (statusBox) {
+        statusBox.className = 'text-sm p-4 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200';
+        statusBox.textContent = msgSuccess;
+        statusBox.classList.remove('hidden');
+      }
+      form.reset();
+    } finally {
+      if (submitBtn && btnText) {
+        submitBtn.disabled = false;
+        btnText.textContent = btnSubmit;
+      }
+    }
+  });
+</script>

@@ -1,0 +1,51 @@
+---
+import { useTranslations, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const steps = [
+  { num: 'process.step1.num', title: 'process.step1.title', desc: 'process.step1.desc' },
+  { num: 'process.step2.num', title: 'process.step2.title', desc: 'process.step2.desc' },
+  { num: 'process.step3.num', title: 'process.step3.title', desc: 'process.step3.desc' },
+  { num: 'process.step4.num', title: 'process.step4.title', desc: 'process.step4.desc' },
+] as const;
+---
+
+<section id="proceso" class="py-20 sm:py-28 px-4 bg-[#141414] text-[#FCFCFC] rounded-3xl my-8 mx-2 sm:mx-4">
+  <div class="max-w-5xl mx-auto">
+    <div class="max-w-2xl mx-auto text-center mb-16">
+      <p class="text-xs font-semibold uppercase tracking-widest text-[#EC8C4E] mb-2">
+        {t('process.tag')}
+      </p>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight">
+        {t('process.title')}
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {
+        steps.map((s, idx) => (
+          <div class="bg-[#242424] border border-[#4C4C4C]/40 rounded-2xl p-6 relative flex flex-col justify-between hover:border-[#EC8C4E] transition-colors">
+            <div>
+              <span class="text-3xl font-bold text-[#EC8C4E] tracking-tight block mb-4">
+                {t(s.num)}
+              </span>
+              <h3 class="text-lg font-semibold text-[#FCFCFC] mb-2">
+                {t(s.title)}
+              </h3>
+              <p class="text-xs sm:text-sm text-[#B0B0B0] leading-relaxed">
+                {t(s.desc)}
+              </p>
+            </div>
+            <div class="w-8 h-1 bg-[#EC8C4E]/30 rounded-full mt-6"></div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

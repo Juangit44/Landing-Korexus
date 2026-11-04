@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ArrowLeft, Compass } from '@lucide/astro';
+
+const lang = 'en';
+const title = 'Page Not Found (404) — Korexus';
+const description = 'The page you are looking for does not exist or has been moved.';
+---
+
+<BaseLayout title={title} description={description} lang={lang} currentPath="/en/404">
+  <div class="max-w-md mx-auto px-4 py-24 text-center">
+    <div class="w-16 h-16 rounded-2xl bg-[#EC8C4E]/15 text-[#D0681C] flex items-center justify-center mx-auto mb-6">
+      <Compass class="w-8 h-8" />
+    </div>
+    <span class="text-xs font-bold text-[#B8500D] tracking-widest uppercase">Error 404</span>
+    <h1 class="text-3xl sm:text-4xl font-medium tracking-tight text-[#141414] mt-2 mb-4">
+      Page not found
+    </h1>
+    <p class="text-sm text-[#5A5A5A] mb-8 leading-relaxed">
+      The requested link does not exist or has moved. You can return to our homepage or explore our systems.
+    </p>
+    <a
+      href="/en/"
+      class="inline-flex items-center gap-2 bg-[#141414] text-[#FCFCFC] font-semibold text-sm px-5 py-3 rounded-full hover:bg-[#242424] transition shadow-md"
+    >
+      <ArrowLeft class="w-4 h-4" />
+      <span>Return to homepage</span>
+    </a>
+  </div>
+</BaseLayout>
