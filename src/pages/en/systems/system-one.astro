@@ -3,8 +3,8 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { ArrowLeft, ExternalLink, CheckCircle, ShieldCheck } from '@lucide/astro';
 
 const lang = 'en';
-const title = 'Operations & Management Platform — Korexus Case Study';
-const description = 'Bespoke web platform built to unify workflows, live inventory, and invoicing.';
+const title = 'Casa Rosa — Café & Artisanal Bakery — Korexus Case Study';
+const description = 'Commercial web platform for Casa Rosa in Vallegrande, Bolivia, featuring a star-product catalog, WhatsApp ordering, and a private self-managed admin panel.';
 ---
 
 <BaseLayout title={title} description={description} lang={lang} currentPath="/en/systems/system-one">
@@ -22,20 +22,20 @@ const description = 'Bespoke web platform built to unify workflows, live invento
     <div class="border-b border-[#242424]/10 pb-8">
       <div class="flex items-center gap-3 mb-4">
         <span class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
-          In Production • Public
+          In Production • Public (2026)
         </span>
-        <span class="text-xs text-[#5A5A5A]">Commercial sector client</span>
+        <span class="text-xs text-[#5A5A5A]">Vallegrande, Bolivia</span>
       </div>
       <h1 class="text-3xl sm:text-5xl font-medium tracking-tight text-[#141414]">
-        Operations & Management Platform
+        Casa Rosa — Café & Artisanal Bakery
       </h1>
       <p class="mt-4 text-base sm:text-lg text-[#5A5A5A] leading-relaxed">
-        Custom web platform built to replace chaotic spreadsheets with a single, dependable operational source of truth.
+        Commercial web platform designed to showcase the story and star-product catalog of this artisanal café and bakery, streamline direct WhatsApp ordering, and give the team full autonomy through a private self-managed admin panel.
       </p>
 
       <div class="mt-6 flex flex-wrap items-center gap-4">
         <a
-          href="#"
+          href="https://casarosa.pages.dev/"
           target="_blank"
           rel="noopener noreferrer"
           class="bg-[#EC8C4E] hover:bg-[#F3B47E] text-[#141414] font-semibold px-5 py-2.5 rounded-full inline-flex items-center gap-2 shadow-sm text-sm transition"
@@ -54,17 +54,17 @@ const description = 'Bespoke web platform built to unify workflows, live invento
 
     <!-- Content Sections -->
     <div class="py-10 space-y-12">
-      <!-- Problem -->
+      <!-- Project Objective -->
       <section>
         <h2 class="text-xl sm:text-2xl font-semibold text-[#141414] mb-3">
-          The Problem Solved
+          Project Objective
         </h2>
         <p class="text-[#5A5A5A] leading-relaxed">
-          The company handled warehouse inventory, orders, and billing across fragmented Excel sheets. This created duplicate shipments, inventory mismatches, and severe delays in delivery reporting.
+          Give Casa Rosa in Vallegrande, Bolivia, a warm, fast digital storefront where visitors can discover its artisanal identity, browse star products, check practical visit details, and place orders directly via WhatsApp, while the business manages its catalog and store information independently.
         </p>
       </section>
 
-      <!-- Engineering solution -->
+      <!-- What Korexus Built -->
       <section>
         <h2 class="text-xl sm:text-2xl font-semibold text-[#141414] mb-4">
           What Korexus Built
@@ -73,38 +73,55 @@ const description = 'Bespoke web platform built to unify workflows, live invento
           <li class="flex items-start gap-3">
             <CheckCircle class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
             <span class="text-[#5A5A5A] leading-relaxed">
-              <strong class="text-[#141414]">Real-time operational dashboard:</strong> Central tracking for all open orders, shipments, and automated payment status.
+              <strong class="text-[#141414]">Star-product catalog & brand story:</strong> Dedicated presentation of signature café and artisanal bakery items paired with Casa Rosa's story.
             </span>
           </li>
           <li class="flex items-start gap-3">
             <CheckCircle class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
             <span class="text-[#5A5A5A] leading-relaxed">
-              <strong class="text-[#141414]">Granular role-based access:</strong> Strict permissions across sales, warehouse, and finance to avoid data leaks.
+              <strong class="text-[#141414]">Per-product WhatsApp ordering buttons:</strong> Direct WhatsApp triggers on each product so customers can start an order immediately without friction.
             </span>
           </li>
           <li class="flex items-start gap-3">
             <CheckCircle class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
             <span class="text-[#5A5A5A] leading-relaxed">
-              <strong class="text-[#141414]">Lightning performance:</strong> Sub-400ms page response for field workers on tablets and mobile devices.
+              <strong class="text-[#141414]">Visitor essentials in Vallegrande:</strong> Clear presentation of street location details, parking availability, opening hours, and an interactive location map.
+            </span>
+          </li>
+          <li class="flex items-start gap-3">
+            <CheckCircle class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+            <span class="text-[#5A5A5A] leading-relaxed">
+              <strong class="text-[#141414]">Private self-managed admin panel:</strong> Internal administration workspace enabling Casa Rosa's staff to update star products, offerings, and business details on their own.
             </span>
           </li>
         </ul>
       </section>
 
-      <!-- Privacy & Test Data -->
+      <!-- Live Preview -->
       <section>
         <h2 class="text-xl sm:text-2xl font-semibold text-[#141414] mb-4">
-          Screenshots & Verification
+          Live Preview
         </h2>
         <div class="bg-[#141414] rounded-2xl p-8 text-center text-[#FCFCFC] border border-[#242424]">
-          <div class="max-w-md mx-auto space-y-3">
+          <div class="max-w-lg mx-auto space-y-4">
             <div class="w-12 h-12 rounded-xl bg-[#242424] text-[#EC8C4E] flex items-center justify-center mx-auto">
               <ShieldCheck class="w-6 h-6" />
             </div>
-            <p class="font-medium text-lg">Controlled Test Environment</p>
+            <p class="font-medium text-lg">Live Public Storefront & Protected Private Panel</p>
             <p class="text-xs sm:text-sm text-[#B0B0B0] leading-relaxed">
-              To safeguard proprietary customer records, public demo instances and captures exclusively display synthetic test data authorized by the client.
+              You can browse Casa Rosa's public commercial experience directly in production. To protect business operations, its private self-managed admin panel remains strictly restricted to authorized staff, with no public access or exposed internal routes.
             </p>
+            <div class="pt-2">
+              <a
+                href="https://casarosa.pages.dev/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="bg-[#EC8C4E] hover:bg-[#F3B47E] text-[#141414] font-semibold px-5 py-2.5 rounded-full inline-flex items-center gap-2 text-sm transition"
+              >
+                <span>Open Live Site</span>
+                <ExternalLink class="w-4 h-4" />
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -112,7 +129,7 @@ const description = 'Bespoke web platform built to unify workflows, live invento
       <!-- CTA -->
       <div class="pt-6 border-t border-[#242424]/10 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
-          <h3 class="font-semibold text-[#141414]">Ready to streamline your operational processes?</h3>
+          <h3 class="font-semibold text-[#141414]">Need a self-managed commercial web platform?</h3>
           <p class="text-xs text-[#5A5A5A]">Talk directly with the 3 engineers behind Korexus.</p>
         </div>
         <a
