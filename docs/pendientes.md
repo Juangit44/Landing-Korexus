@@ -22,8 +22,13 @@ Este documento recopila mejoras no bloqueantes surgidas durante las auditorías 
 - [ ] **Endurecer validaciones en `tests/favicon.test.mjs`:** Validar coincidencia exacta de atributos `d` contra `logo-korexus-white.svg`, verificación CRC/chunks PNG completos (`IHDR`, `IDAT`, `IEND`) dentro de `public/favicon.ico` y revisión de las 12 páginas en `dist/`.
 - [ ] **Iconos complementarios y script reproducible:** Evaluar añadir `apple-touch-icon` (`180x180` PNG) y entrada `16x16` en `.ico`, guardar un script de regeneración de `favicon.ico` desde `favicon.svg` y normalizar formato/CRLF de `public/favicon.svg`.
 
+## Canales de Contacto y Pruebas (`src/config/contact.ts`, `ContactSection.astro`, `ContactForm.astro`, `tests/contact-channels.test.mjs`)
+- [ ] **Derivar `whatsappDisplay` desde `WHATSAPP_NUMBER`:** Formatear o validar automáticamente `whatsappDisplay` a partir de `WHATSAPP_NUMBER` en `src/config/contact.ts` para evitar literales independientes si cambia el teléfono.
+- [ ] **Ampliar aserciones en `tests/contact-channels.test.mjs`:** Verificar `aria-label` con `+591 71085116` en `dist/`, validar de forma genérica que cualquier `mailto:` o `wa.me/` en `dist/` coincida con `CONTACT_CHANNELS` y comprobar ausencia explícita de `wa.me/` en páginas legales.
+- [ ] **Consistencia de foco accesible (`focus-visible`):** Unificar `focus-visible:ring-2 focus-visible:ring-[#EC8C4E]` en los botones y tarjetas de enlace de `ContactSection.astro` y `ContactForm.astro`.
+
 ## Seguridad y Producción (Auditoría OWASP)
-- [ ] **Formulario de contacto (`src/components/ContactForm.astro`):** Reemplazar la clave placeholder `'YOUR_ACCESS_KEY_HERE'` por variable de entorno o endpoint propio, eliminar el fallback que muestra éxito falso cuando falla el envío, añadir límites `maxlength` y activar protección anti-bot (Turnstile/hCaptcha).
-- [ ] **Canales de contacto coherentes (`ContactForm.astro` / `ContactSection.astro`):** Alinear el `mailto:` con `contacto@korexus.com` y actualizar el número placeholder de WhatsApp en `ContactSection.astro`.
+- [ ] **Formulario de contacto (`src/components/ContactForm.astro`):** Reemplazar la clave placeholder `'YOUR_ACCESS_KEY_HERE'` por la clave real de Web3Forms conectada a `korexussoporte@gmail.com`, eliminar el fallback que muestra éxito falso cuando falla el envío (`!res.ok` / `catch`), añadir límites `maxlength` y activar protección anti-bot (Turnstile/hCaptcha).
+- [x] **Canales de contacto coherentes (`src/config/contact.ts`, `ContactForm.astro`, `ContactSection.astro`, privacidad):** Centralizados correo (`korexussoporte@gmail.com`) y WhatsApp Bolivia (`+591 71085116` / `https://wa.me/59171085116`) en `src/config/contact.ts` y alineados en todas las vistas ES/EN.
 - [ ] **Cabeceras HTTP y configuración (`public/_headers`, `astro.config.mjs`):** Configurar CSP, `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy` y definir `site` explícitamente en `astro.config.mjs`.
 - [ ] **Protección de `.gitignore` y `npm audit`:** Excluir `.env.*`, `*.pem` y `*.key` en `.gitignore`, y ejecutar `npm audit` en un entorno con conexión a internet antes de publicar a clientes reales.

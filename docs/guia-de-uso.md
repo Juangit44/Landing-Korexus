@@ -12,7 +12,8 @@ Incluye:
 - **Portada interactiva:** muestra la palabra **KOREXUS** con luz cálida que sigue el cursor del ratón (y oscila suavemente en teléfonos móviles) junto con los botones para ver sistemas o ir a contacto.
 - **Portafolio de sistemas reales:** incluye el proyecto **Casa Rosa** (`https://casarosa.pages.dev/`) con acceso directo en `"Ver en vivo"` y su ficha técnica completa en español e inglés, además del caso privado/NDA.
 - **Identidad en el navegador:** ícono oficial **"K"** de Korexus sobre fondo oscuro redondeado en la pestaña del navegador, marcadores y móviles.
-- **Secciones informativas y contacto:** Servicios, Cómo trabajamos, Equipo, Formulario de contacto y Aviso de privacidad.
+- **Canales de contacto directos:** correo oficial **`korexussoporte@gmail.com`** y WhatsApp de Bolivia **`+591 71085116`**, conectados desde un punto central en Inicio, la página de Contacto y el Aviso de Privacidad (español e inglés).
+- **Secciones informativas y contacto:** Servicios, Cómo trabajamos, Equipo, Formulario de contacto (pendiente de clave real para envíos automáticos) y Aviso de privacidad.
 
 ---
 
@@ -35,6 +36,8 @@ Incluye:
 
 ## 3. Problemas frecuentes y cómo resolverlos
 
+- **Quiero cambiar el correo o el número de WhatsApp en el futuro:**
+  Basta con actualizar un solo archivo (`src/config/contact.ts`) y volver a ejecutar `npm test`. Todas las páginas (Inicio, Contacto y Aviso de Privacidad, en español e inglés) se actualizarán automáticamente.
 - **En la pestaña del navegador todavía veo el ícono antiguo (o de Astro):**
   Los navegadores guardan los íconos en memoria. Presiona **`Ctrl + Shift + R`** para forzar la recarga completa o abre la web en una ventana privada/incógnito.
 - **Las letras de KOREXUS se ven quietas y no siguen el cursor:**
@@ -42,4 +45,4 @@ Incluye:
 - **No carga la página en el teléfono al probar `Network`:**
   Asegúrate de que el celular y la computadora estén conectados a la misma red Wi-Fi y que el firewall de Windows no esté bloqueando el puerto `4321`.
 - **La página en vivo de un proyecto abre en otra pestaña y quiero volver:**
-  Los enlaces externos (como Casa Rosa) se abren automáticamente en una pestaña nueva para que el visitante nunca pierda tu web de Korexus abierta.
+  Los enlaces externos (como Casa Rosa o WhatsApp) se abren automáticamente en una pestaña nueva para que el visitante nunca pierda tu web de Korexus abierta.

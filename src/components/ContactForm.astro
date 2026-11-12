@@ -1,5 +1,6 @@
 ---
 import { useTranslations, type Lang } from '../i18n/ui';
+import { CONTACT_CHANNELS } from '../config/contact';
 import { Send, CheckCircle2, AlertCircle, Mail, MessageCircle } from '@lucide/astro';
 
 interface Props {
@@ -29,7 +30,7 @@ const privacyUrl = lang === 'en' ? '/en/privacy-policy' : '/aviso-de-privacidad'
     <!-- Direct channels -->
     <div class="space-y-4">
       <a
-        href="mailto:geminiprojuan22@gmail.com"
+        href={CONTACT_CHANNELS.emailHref}
         class="flex items-center gap-4 p-4 rounded-xl border border-[#242424]/10 bg-white hover:border-[#EC8C4E] transition shadow-sm"
       >
         <div class="w-10 h-10 rounded-lg bg-[#EC8C4E]/10 text-[#D0681C] flex items-center justify-center shrink-0">
@@ -37,14 +38,15 @@ const privacyUrl = lang === 'en' ? '/en/privacy-policy' : '/aviso-de-privacidad'
         </div>
         <div>
           <p class="text-xs text-[#5A5A5A]">{t('contact.email_label')}</p>
-          <p class="text-sm font-semibold text-[#141414]">contacto@korexus.com</p>
+          <p class="text-sm font-semibold text-[#141414]">{CONTACT_CHANNELS.email}</p>
         </div>
       </a>
 
       <a
-        href="https://wa.me/59178130974"
+        href={CONTACT_CHANNELS.whatsappHref}
         target="_blank"
         rel="noopener noreferrer"
+        aria-label={`${t('contact.whatsapp_direct')} (${CONTACT_CHANNELS.whatsappDisplay})`}
         class="flex items-center gap-4 p-4 rounded-xl border border-[#242424]/10 bg-white hover:border-emerald-500 transition shadow-sm"
       >
         <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
@@ -52,7 +54,7 @@ const privacyUrl = lang === 'en' ? '/en/privacy-policy' : '/aviso-de-privacidad'
         </div>
         <div>
           <p class="text-xs text-[#5A5A5A]">{t('contact.whatsapp_label')}</p>
-          <p class="text-sm font-semibold text-[#141414]">WhatsApp Chat Directo</p>
+          <p class="text-sm font-semibold text-[#141414]">{t('contact.whatsapp_direct')}</p>
         </div>
       </a>
     </div>

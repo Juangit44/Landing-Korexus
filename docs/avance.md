@@ -7,13 +7,13 @@
 - **Etapa 2 (Proyecto real Casa Rosa):** Reemplazo completo de Sistema 1 en portada (EN/ES) y fichas de detalle hacia `https://casarosa.pages.dev/`, botón circular naranja no bloqueante y enlace en vivo independiente.
 - **Etapa 3 (Favicon oficial "K"):** Nuevo `public/favicon.svg`, reemplazo real de `public/favicon.ico` (`32x32` y `48x48`) y enlaces `?v=2` en `src/layouts/BaseLayout.astro`.
 - **Seguridad e higiene para repositorio público:** Auditoría OWASP aprobada (0 vulnerabilidades críticas o altas abiertas); eliminadas menciones literales de rutas internas del cliente y protegidos `.env.*`, `*.pem` y `*.key` en `.gitignore`.
-- **Entregables finales:** Creada `docs/guia-de-uso.md` y actualizada `docs/pendientes.md`.
+- **Etapa 4 (Canales de contacto personalizados y centralizados):** Nuevo módulo único `src/config/contact.ts` con `korexussoporte@gmail.com` y WhatsApp Bolivia `+591 71085116` (`https://wa.me/59171085116`), conectados a Inicio (`ContactSection.astro`, correo ahora clicable), Contacto (`ContactForm.astro` + traducción EN `"WhatsApp Direct Chat"` en `src/i18n/ui.ts`) y Avisos de Privacidad ES/EN (`aviso-de-privacidad.astro`, `en/privacy-policy.astro`). Suite `npm test` (`27/27`) en verde y revisión de `revisor` aprobada con 0 bloqueantes.
 
 ## 2. Etapa en Curso
-- Commit en `feature/hero-interactive-typography`, merge `--no-ff` a `main`, verificación de suite completa en `main` y push a `origin/main` (autorizado por el usuario).
+- Commit en `feature/contact-channels` y merge `--no-ff` a `main` (autorizado por el usuario); pendiente decidir si subir a `origin/main` (`push`).
 
 ## 3. Decisiones Abiertas
-- Pendiente para próxima sesión: configurar la clave real de Web3Forms en `ContactForm.astro` / cabeceras HTTP (`docs/pendientes.md`) y evaluar el rediseño de tarjetas de proyectos.
+- Pendiente para próxima iteración: configurar la clave real de Web3Forms conectada a `korexussoporte@gmail.com` en `ContactForm.astro` (y corregir manejo de errores `!res.ok` / `catch`), cabeceras HTTP (`docs/pendientes.md`) y evaluar el rediseño de tarjetas de proyectos.
 
 ## 4. Siguiente Paso Concreto
-- Ejecutar commit, merge a `main`, suite completa en `main` y `git push origin main`.
+- Con confirmación del usuario, realizar commit en `feature/contact-channels`, integrar en `main` con `--no-ff`, verificar `npm test` en `main` y ejecutar `git push origin main` si lo autoriza.
