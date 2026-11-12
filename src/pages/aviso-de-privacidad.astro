@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { CONTACT_CHANNELS } from '../config/contact';
 import { ArrowLeft, Shield } from '@lucide/astro';
 
 const lang = 'es';
@@ -54,7 +55,7 @@ const description = 'Borrador de aviso de privacidad para el tratamiento de dato
       <section>
         <h2 class="text-lg font-semibold text-[#141414] mb-2">4. Derechos ARCO / Derechos del titular</h2>
         <p>
-          Puede solicitar en cualquier momento la eliminación o rectificación de su información enviando un correo a <a href="mailto:contacto@korexus.com" class="text-[#B8500D] underline font-medium">contacto@korexus.com</a>.
+          Puede solicitar en cualquier momento la eliminación o rectificación de su información enviando un correo a <a href={CONTACT_CHANNELS.emailHref} class="text-[#B8500D] underline font-medium">{CONTACT_CHANNELS.email}</a>.
         </p>
       </section>
     </div>

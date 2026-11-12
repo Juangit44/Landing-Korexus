@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { CONTACT_CHANNELS } from '../../config/contact';
 import { ArrowLeft, Shield } from '@lucide/astro';
 
 const lang = 'en';
@@ -54,7 +55,7 @@ const description = 'Privacy policy draft regarding information collected throug
       <section>
         <h2 class="text-lg font-semibold text-[#141414] mb-2">4. Your Rights (GDPR / CCPA / Data Rights)</h2>
         <p>
-          You may request deletion or verification of your contact correspondence at any time by emailing <a href="mailto:contacto@korexus.com" class="text-[#B8500D] underline font-medium">contacto@korexus.com</a>.
+          You may request deletion or verification of your contact correspondence at any time by emailing <a href={CONTACT_CHANNELS.emailHref} class="text-[#B8500D] underline font-medium">{CONTACT_CHANNELS.email}</a>.
         </p>
       </section>
     </div>

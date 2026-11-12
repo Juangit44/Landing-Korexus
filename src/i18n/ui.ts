@@ -106,6 +106,7 @@ export const ui = {
     'contact.btn_whatsapp': 'Escribir por WhatsApp',
     'contact.email_label': 'Correo directo',
     'contact.whatsapp_label': 'WhatsApp',
+    'contact.whatsapp_direct': 'WhatsApp Chat Directo',
     'contact.placeholder_notice': 'Respuesta rápida en menos de 24 horas hábiles.',
 
     // Contact Page / Form
@@ -230,6 +231,7 @@ export const ui = {
     'contact.btn_whatsapp': 'Chat on WhatsApp',
     'contact.email_label': 'Direct email',
     'contact.whatsapp_label': 'WhatsApp',
+    'contact.whatsapp_direct': 'WhatsApp Direct Chat',
     'contact.placeholder_notice': 'Fast reply within 24 business hours.',
 
     // Contact Page / Form

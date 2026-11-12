@@ -1,5 +1,6 @@
 ---
 import { useTranslations, type Lang } from '../i18n/ui';
+import { CONTACT_CHANNELS } from '../config/contact';
 import { Mail, MessageCircle, ArrowUpRight } from '@lucide/astro';
 
 interface Props {
@@ -10,8 +11,6 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 
 const formUrl = lang === 'en' ? '/en/contact' : '/contacto';
-const whatsappNumber = '5210000000000'; // Placeholder to be updated with real phone
-const contactEmail = 'contacto@korexus.com';
 ---
 
 <section id="contacto" class="py-20 sm:py-24 px-4 bg-[#FCFCFC]">
@@ -43,9 +42,10 @@ const contactEmail = 'contacto@korexus.com';
           </a>
 
           <a
-            href={`https://wa.me/${whatsappNumber}`}
+            href={CONTACT_CHANNELS.whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={`${t('contact.btn_whatsapp')} (${CONTACT_CHANNELS.whatsappDisplay})`}
             class="bg-[#242424] hover:bg-[#333333] text-[#FCFCFC] border border-[#4C4C4C] font-medium px-5 py-3.5 rounded-full inline-flex items-center gap-2 transition active:scale-95 text-sm sm:text-base"
           >
             <MessageCircle class="w-4 h-4 text-emerald-400" />
@@ -55,10 +55,13 @@ const contactEmail = 'contacto@korexus.com';
 
         <!-- Quick Info -->
         <div class="mt-10 pt-8 border-t border-[#4C4C4C]/40 flex flex-wrap items-center gap-6 text-xs text-[#B0B0B0]">
-          <div class="flex items-center gap-2">
+          <a
+            href={CONTACT_CHANNELS.emailHref}
+            class="inline-flex items-center gap-2 hover:text-[#FCFCFC] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EC8C4E] rounded"
+          >
             <Mail class="w-4 h-4 text-[#EC8C4E]" />
-            <span>{contactEmail}</span>
-          </div>
+            <span>{CONTACT_CHANNELS.email}</span>
+          </a>
           <div>
             <span>•</span>
           </div>
